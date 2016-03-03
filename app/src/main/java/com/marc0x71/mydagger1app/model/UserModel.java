@@ -13,6 +13,6 @@ public class UserModel implements LoginContract.Model {
 
     @Override
     public boolean validate(String username, String password) {
-        return username.equalsIgnoreCase(USERNAME) && username.compareTo(PASSWORD) == 0;
+        return username.compareTo(USERNAME) == 0 && password.compareTo(PASSWORD) == 0;
     }
 }

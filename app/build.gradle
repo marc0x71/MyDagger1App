@@ -22,6 +22,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+    // butterknife
+    compile 'com.jakewharton:butterknife:7.0.1'
+
     // dagger1
     provided 'com.squareup.dagger:dagger-compiler:1.2.+'
 
