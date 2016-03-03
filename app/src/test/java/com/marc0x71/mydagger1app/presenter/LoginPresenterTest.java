@@ -43,6 +43,7 @@ public class LoginPresenterTest {
         objectGraph.inject(presenter);
         model = presenter.model;
         resourceProvider = presenter.resourceProvider;
+        presenter.dump();
     }
 
     @Test
