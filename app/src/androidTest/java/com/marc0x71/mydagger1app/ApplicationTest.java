@@ -1,4 +1,4 @@
-package marc0x71.com.mydagger1app;
+package com.marc0x71.mydagger1app;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
