@@ -1,9 +1,9 @@
-package com.marc0x71.mydagger1app.provider;
+package com.marc0x71.mydagger1app.mock.provider;
 
 import android.content.Context;
 
 /**
- * Created by MBollero on 03/03/2016.
+ * Created by marc0x71 on 03/03/2016.
  */
 public class ResourceProvider implements IResourceProvider {
 

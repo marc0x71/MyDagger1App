@@ -2,12 +2,12 @@ package com.marc0x71.mydagger1app.presenter;
 
 import com.marc0x71.mydagger1app.R;
 import com.marc0x71.mydagger1app.contract.LoginContract;
-import com.marc0x71.mydagger1app.provider.IResourceProvider;
+import com.marc0x71.mydagger1app.mock.provider.IResourceProvider;
 
 import javax.inject.Inject;
 
 /**
- * Created by MBollero on 03/03/2016.
+ * Created by marc0x71 on 03/03/2016.
  */
 public class LoginPresenter implements LoginContract.Action {
 

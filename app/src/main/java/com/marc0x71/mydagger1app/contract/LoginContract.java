@@ -1,7 +1,7 @@
 package com.marc0x71.mydagger1app.contract;
 
 /**
- * Created by MBollero on 03/03/2016.
+ * Created by marc0x71 on 03/03/2016.
  */
 public interface LoginContract {
 
