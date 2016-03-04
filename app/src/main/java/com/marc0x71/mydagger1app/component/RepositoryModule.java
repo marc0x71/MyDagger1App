@@ -1,4 +1,4 @@
-package com.marc0x71.mydagger1app.mock.component;
+package com.marc0x71.mydagger1app.component;
 
 import com.marc0x71.mydagger1app.contract.LoginContract;
 import com.marc0x71.mydagger1app.model.UserModel;

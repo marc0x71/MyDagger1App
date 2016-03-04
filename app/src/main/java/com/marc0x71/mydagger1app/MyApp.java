@@ -2,9 +2,9 @@ package com.marc0x71.mydagger1app;
 
 import android.app.Application;
 
-import com.marc0x71.mydagger1app.mock.component.AppModule;
-import com.marc0x71.mydagger1app.mock.component.PresenterModule;
-import com.marc0x71.mydagger1app.mock.component.RepositoryModule;
+import com.marc0x71.mydagger1app.component.AppModule;
+import com.marc0x71.mydagger1app.component.PresenterModule;
+import com.marc0x71.mydagger1app.component.RepositoryModule;
 
 import dagger.ObjectGraph;
 

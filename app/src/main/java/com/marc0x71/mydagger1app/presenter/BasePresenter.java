@@ -1,6 +1,6 @@
 package com.marc0x71.mydagger1app.presenter;
 
-import com.marc0x71.mydagger1app.mock.provider.IResourceProvider;
+import com.marc0x71.mydagger1app.provider.IResourceProvider;
 
 import javax.inject.Inject;
 

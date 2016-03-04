@@ -1,4 +1,4 @@
-package com.marc0x71.mydagger1app.mock.provider;
+package com.marc0x71.mydagger1app.provider;
 
 import android.content.Context;
 

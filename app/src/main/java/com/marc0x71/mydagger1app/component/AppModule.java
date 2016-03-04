@@ -1,9 +1,9 @@
-package com.marc0x71.mydagger1app.mock.component;
+package com.marc0x71.mydagger1app.component;
 
 import android.content.Context;
 
-import com.marc0x71.mydagger1app.mock.provider.IResourceProvider;
-import com.marc0x71.mydagger1app.mock.provider.ResourceProvider;
+import com.marc0x71.mydagger1app.provider.IResourceProvider;
+import com.marc0x71.mydagger1app.provider.ResourceProvider;
 
 import javax.inject.Singleton;
 

@@ -1,4 +1,4 @@
-package com.marc0x71.mydagger1app.mock.provider;
+package com.marc0x71.mydagger1app.provider;
 
 /**
  * Created by marc0x71 on 03/03/2016.
