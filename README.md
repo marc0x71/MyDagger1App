@@ -1,6 +1,6 @@
 # MyDagger1App
 
-This is a test Android MVP project that uses the following libraries:
+This is a sample Android MVP project that uses the following libraries:
 
 * dagger1 - http://square.github.io/dagger
 * ButterKnife - http://jakewharton.github.io/butterknife
