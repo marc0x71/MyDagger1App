@@ -7,7 +7,7 @@ import javax.inject.Inject;
 /**
  * Created by marc0x71 on 03/03/2016.
  */
-public class BasePresenter {
+public abstract class BasePresenter<V> implements Presenter<V> {
 
     @Inject
     IResourceProvider resourceProvider;

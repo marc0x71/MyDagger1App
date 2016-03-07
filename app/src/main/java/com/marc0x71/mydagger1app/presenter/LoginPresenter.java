@@ -8,16 +8,12 @@ import javax.inject.Inject;
 /**
  * Created by marc0x71 on 03/03/2016.
  */
-public class LoginPresenter extends BasePresenter implements LoginContract.Action {
+public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Action {
 
     @Inject
     LoginContract.Model model;
 
     LoginContract.View view;
-
-    public LoginPresenter(LoginContract.View view) {
-        this.view = view;
-    }
 
     @Override
     public void userLogin(String username, String password) {
@@ -40,5 +36,20 @@ public class LoginPresenter extends BasePresenter implements LoginContract.Actio
                 ", resourceProvider=" + resourceProvider +
                 ", view=" + view +
                 '}';
+    }
+
+    @Override
+    public void onViewAttached(LoginContract.View view) {
+        this.view = view;
+    }
+
+    @Override
+    public void onViewDetached() {
+        this.view = null;
+    }
+
+    @Override
+    public void onDestroyed() {
+        // Nothing to do...
     }
 }
