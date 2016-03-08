@@ -1,8 +1,8 @@
 package com.marc0x71.mydagger1app.presenter;
 
 import com.marc0x71.mydagger1app.R;
-import com.marc0x71.mydagger1app.component.MockTestModule;
 import com.marc0x71.mydagger1app.contract.LoginContract;
+import com.marc0x71.mydagger1app.mock.component.MockTestModule;
 import com.marc0x71.mydagger1app.provider.IResourceProvider;
 
 import org.junit.Before;

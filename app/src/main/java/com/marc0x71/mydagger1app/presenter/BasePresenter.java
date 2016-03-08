@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 /**
@@ -19,7 +19,15 @@ public abstract class BasePresenter<V> implements Presenter<V> {
 
     @Inject
     IResourceProvider resourceProvider;
-    ;
+
+    @Inject
+    @Named("observer")
+    rx.Scheduler observerScheduler;
+
+    @Inject
+    @Named("publisher")
+    rx.Scheduler publisherScheduler;
+
     List<PendingUITask> pendingTasks = new ArrayList<>();
     private V view;
 
@@ -41,8 +49,8 @@ public abstract class BasePresenter<V> implements Presenter<V> {
     private void checkPending() {
         Timber.d("checkPending...");
         Observable.from(pendingTasks)
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(publisherScheduler)
+                .observeOn(publisherScheduler)
                 .subscribe(new Subscriber<PendingUITask>() {
                     @Override
                     public void onCompleted() {

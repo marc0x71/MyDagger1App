@@ -6,8 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by marc0x71 on 08/03/2016.
@@ -18,8 +16,8 @@ public class HelloPresenter extends BasePresenter<HelloContract.View> implements
     public void onButtonPressed() {
         Observable.just(null)
                 .delay(2, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(observerScheduler)
+                .observeOn(publisherScheduler)
                 .subscribe(new Subscriber<Object>() {
                     @Override
                     public void onCompleted() {
