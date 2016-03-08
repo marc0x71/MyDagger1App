@@ -51,7 +51,7 @@ public class LoginPresenterTest {
     public void notNull() {
         assertNotNull(presenter);
         assertNotNull(presenter.model);
-        assertNotNull(presenter.view);
+        assertNotNull(presenter.getView());
         assertNotNull(presenter.resourceProvider);
     }
 

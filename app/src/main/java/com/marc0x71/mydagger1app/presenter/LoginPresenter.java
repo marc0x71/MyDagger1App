@@ -13,15 +13,13 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     @Inject
     LoginContract.Model model;
 
-    LoginContract.View view;
-
     @Override
     public void userLogin(String username, String password) {
         if (model.validate(username, password)) {
-            view.showInfoMessage(resourceProvider.getString(R.string.login_success_message));
-            view.goToMainActivity();
+            getView().showInfoMessage(resourceProvider.getString(R.string.login_success_message));
+            getView().goToMainActivity();
         } else {
-            view.showErrorMessage(resourceProvider.getString(R.string.login_failure_message));
+            getView().showErrorMessage(resourceProvider.getString(R.string.login_failure_message));
         }
     }
 
@@ -34,18 +32,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         return "LoginPresenter{" +
                 "model=" + model +
                 ", resourceProvider=" + resourceProvider +
-                ", view=" + view +
+                ", view=" + getView() +
                 '}';
-    }
-
-    @Override
-    public void onViewAttached(LoginContract.View view) {
-        this.view = view;
-    }
-
-    @Override
-    public void onViewDetached() {
-        this.view = null;
     }
 
     @Override

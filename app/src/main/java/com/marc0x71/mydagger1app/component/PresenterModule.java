@@ -1,5 +1,6 @@
 package com.marc0x71.mydagger1app.component;
 
+import com.marc0x71.mydagger1app.presenter.HelloPresenter;
 import com.marc0x71.mydagger1app.presenter.LoginPresenter;
 
 import dagger.Module;
@@ -9,6 +10,6 @@ import dagger.Module;
  */
 @Module(
         includes = {AppModule.class, RepositoryModule.class},
-        injects = {LoginPresenter.class})
+        injects = {LoginPresenter.class, HelloPresenter.class})
 public class PresenterModule {
 }

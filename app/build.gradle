@@ -33,6 +33,10 @@ dependencies {
     // timber
     compile 'com.jakewharton.timber:timber:4.1.1'
 
+    // rxjava/rxandroid
+    compile "io.reactivex:rxandroid:1.1.0"
+    compile "io.reactivex:rxjava:1.1.1"
+
     // test
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-all:1.10.19'
