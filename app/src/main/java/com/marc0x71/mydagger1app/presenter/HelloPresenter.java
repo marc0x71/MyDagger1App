@@ -21,7 +21,7 @@ public class HelloPresenter extends BasePresenter<HelloContract.View> implements
                 .subscribe(new Subscriber<Object>() {
                     @Override
                     public void onCompleted() {
-                        scheduleUITask(new PendingUITask() {
+                        whenViewAvailable(new UITask() {
                             @Override
                             public void updateUI() {
                                 getView().sayHello();

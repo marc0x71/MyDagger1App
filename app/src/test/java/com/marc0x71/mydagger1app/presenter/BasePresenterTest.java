@@ -52,8 +52,8 @@ public class BasePresenterTest {
     }
 
     @Test
-    public void viewReset() {
-        presenter.onViewDetached();
+	public void whenViewAvailable() {
+		presenter.onViewDetached();
         // reset flag
         presenter.setTaskExecuted(false);
 
@@ -70,6 +70,26 @@ public class BasePresenterTest {
         // now the task must be executed
         assertTrue(presenter.isTaskExecuted());
     }
+
+	@Test
+	public void ifViewAvailable() {
+		presenter.onViewDetached();
+		// reset flag
+		presenter.setTaskExecuted(false);
+
+		// start task
+		presenter.executeTask();
+
+		// check no task already executed
+		assertFalse(presenter.isTaskExecuted());
+
+		// attach the view
+		presenter.onViewAttached(view);
+		assertEquals(presenter.getView(), view);
+
+		// now the task must be executed
+		assertFalse(presenter.isTaskExecuted());
+	}
 
     public class MyPresenter extends BasePresenter {
 
@@ -89,13 +109,22 @@ public class BasePresenterTest {
         }
 
         public void addPendingTask() {
-            scheduleUITask(new PendingUITask() {
-                @Override
+			whenViewAvailable(new UITask() {
+				@Override
                 public void updateUI() {
                     taskExecuted = true;
                 }
             });
         }
-    }
+
+		public void executeTask() {
+			ifViewAvailable(new UITask() {
+				@Override
+				public void updateUI() {
+					taskExecuted = true;
+				}
+			});
+		}
+	}
 
 }

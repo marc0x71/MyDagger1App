@@ -8,8 +8,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import rx.Observable;
-import rx.Subscriber;
 import timber.log.Timber;
 
 /**
@@ -28,8 +26,8 @@ public abstract class BasePresenter<V> implements Presenter<V> {
     @Named("publisher")
     rx.Scheduler publisherScheduler;
 
-    List<PendingUITask> pendingTasks = new ArrayList<>();
-    private V view;
+	List<UITask> pendingTasks = new ArrayList<>();
+	private V view;
 
     @Override
     public void onViewAttached(V view) {
@@ -37,49 +35,54 @@ public abstract class BasePresenter<V> implements Presenter<V> {
         checkPending();
     }
 
-    protected void scheduleUITask(PendingUITask task) {
-        if (view != null) {
+	/**
+	 * Execute the task when the View is available
+	 *
+	 * @param task Task to execute on View. Use getView() to retrieve the attached view
+	 */
+	protected void whenViewAvailable(UITask task) {
+		if (view != null) {
             task.updateUI();
         } else {
             Timber.d("add to pending task...");
             pendingTasks.add(task);
-        }
-    }
+		}
+	}
+
+	/**
+	 * Execute the task only if the View is available
+	 *
+	 * @param task Task to execute on View. Use getView() to retrieve the attached view
+	 */
+	protected void ifViewAvailable(UITask task) {
+		if (view != null) {
+			task.updateUI();
+		}
+	}
 
     private void checkPending() {
-        Timber.d("checkPending...");
-        Observable.from(pendingTasks)
-                .subscribeOn(publisherScheduler)
-                .observeOn(publisherScheduler)
-                .subscribe(new Subscriber<PendingUITask>() {
-                    @Override
-                    public void onCompleted() {
-                        pendingTasks.clear();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(PendingUITask task) {
-                        Timber.d("updating view...");
-                        task.updateUI();
-                    }
-                });
+		if (pendingTasks.isEmpty()) return;
+		Timber.d("check pending...");
+		for (int i = 0; i < pendingTasks.size(); i++) {
+			pendingTasks.get(i).updateUI();
+		}
     }
 
     @Override
     public void onViewDetached() {
-        view = null;
-    }
+		view = null;
+	}
 
-    protected V getView() {
-        return view;
-    }
+	@Override
+	public void onDestroyed() {
+		pendingTasks.clear();
+	}
 
-    protected interface PendingUITask {
-        void updateUI();
+	protected V getView() {
+		return view;
+	}
+
+	protected interface UITask {
+		void updateUI();
     }
 }
